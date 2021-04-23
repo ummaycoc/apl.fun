@@ -19,11 +19,11 @@
 ⍝   7 5 0 3 | xxxx | All correct
 
 s ← 'Please enter a four digit number: '
-p ← {x←+/⍺=⍵ ⋄ o←(+/⍺∊⍵)-x ⋄ x o/'xo'}
-n ← {⍎¨(⍵∊⎕D)/⍵}
-q ← {⍞←⍵ ⋄ (≢⍵)↓⍞}
-g ← {1↓{n'1',q s}⍣{5=≢⍺}''}
-w ← {⎕←⍺ ⋄ 4=+/'x'=⍺}
-r ← {(4?9)(p∘g)⍣w''}
+p ← {x←+/⍺=⍵ ⋄ o←(+/⍺∊⍵)-x ⋄ x o/'xo'}  ⍝ convert guess to x's & o's
+n ← {⍎¨(⍵∊⎕D)/⍵}                        ⍝ scan string for digits
+q ← {⍞←⍵ ⋄ (≢⍵)↓⍞}                      ⍝ ask user for input
+g ← {1↓{n'1',q s}⍣{5=≢⍺}''}             ⍝ acquire guess from user
+w ← {⎕←⍺ ⋄ 4=+/'x'=⍺}                   ⍝ winning condition
+r ← {(4?9)(p∘g)⍣w''}                    ⍝ run game
 
 ⍝ Play: r ⍬ (or r with any argument)

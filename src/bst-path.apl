@@ -31,8 +31,13 @@
 ⍝   8   20  |     2  | 2 edges from 8 to 20
 ⍝  56   86  |     5  | 5 edges from 56 to 86
 
+⍝ range adjustment: low high a current target → (low current) or (current high)
 a ← {</⍵:⍵[1],⍺[2] ⋄ ⍺[1],⍵[1]}
 
+⍝ recursive-search: tree... r low high tarrget index → path from target to root
+⍝   low..high is the range for the subtree being examined
+⍝   target is the node we want
+⍝   index is where we are in tree...
 r ← {
   l h t i←⍵
   ⍺[i]=t:t
@@ -40,18 +45,19 @@ r ← {
   (⍺∇(l h a ⍺[i]t),t,i+1),⍺[i]
 }
 
+⍝ search: node s tree... → path from root to node
 s ← {⌽⍵r(⌊/⍵)(⌈/⍵)⍺1}
 
+⍝ compare: path1 c path2 → |path1| |path1 & path2| |path2|
+⍝   where path1 & path2 is their common prefix
 c ← {(≢⍺),(+/∧\⊃=/⍺⍵↑¨⍨⌊/≢¨⍺⍵),(≢⍵)}
 
-d ← {
+d ← { ⍝ distance: node1 node2 d tree... → distance
   ~∧/⍺∊⍵:¯1
-  +/1 ¯2 1×(⌽⍺[1]s⍵)c(⌽⍺[2]s⍵)
+  +/1 ¯2 1×(⍺[1]s⍵)c(⍺[2]s⍵)
 }
 
-⍝ Calculate distance with: node1 node2 d tree
-
-t ← { ⍝ expected t node1 node2 tree...
+t ← { ⍝ test: expected t node1 node2 tree...
   w←∊⍵
   f←w[1,2]d 2↓w
   ⍺=f:'Test ',(⍕w[1,2]),' passed'
