@@ -31,31 +31,24 @@
 ⍝   8   20  |     2  | 2 edges from 8 to 20
 ⍝  56   86  |     5  | 5 edges from 56 to 86
 
-⍝ range adjustment: low high a current target → (low current) or (current high)
-a ← {</⍵:⍵[1],⍺[2] ⋄ ⍺[1],⍵[1]}
+⍝ bounds: tree (cmp b scan) value → bounds-seq
+⍝   find the increasing-lower or decreasing-upper
+⍝   bounds of subtrees holding a given value, via
+⍝   <b⌈ and >b⌊, respectively.
+b ← {∪⍵⍵\(⍺ ⍺⍺ ⍵)/⍺}
 
-⍝ recursive-search: tree... r low high tarrget index → path from target to root
-⍝   low..high is the range for the subtree being examined
-⍝   target is the node we want
-⍝   index is where we are in tree...
-r ← {
-  l h t i←⍵
-  ⍺[i]=t:t
-  (⍺[i]<l)∨(⍺[i]>h):⍺∇l,h,t,i+1
-  (⍺∇(l h a ⍺[i]t),t,i+1),⍺[i]
-}
+⍝ preceeds: node p tree → nodes added before node
+p ← {⍵↑⍨¯1+⍵⍳⍺}
 
 ⍝ search: node s tree... → path from root to node
-s ← {⌽⍵r(⌊/⍵)(⌈/⍵)⍺1}
+s ← {n←⍺ p ⍵ ⋄ l←n⍳(n(<b⌈)⍺),(n(>b⌊)⍺) ⋄ n[l[⍋l]],⍺}
 
 ⍝ compare: path1 c path2 → |path1| |path1 & path2| |path2|
 ⍝   where path1 & path2 is their common prefix
 c ← {(≢⍺),(+/∧\⊃=/⍺⍵↑¨⍨⌊/≢¨⍺⍵),(≢⍵)}
 
-d ← { ⍝ distance: node1 node2 d tree... → distance
-  ~∧/⍺∊⍵:¯1
-  +/1 ¯2 1×(⍺[1]s⍵)c(⍺[2]s⍵)
-}
+⍝ distance: node1 node2 d tree... → distance
+d ← {~∧/⍺∊⍵:¯1 ⋄ +/1 ¯2 1×(⍺[1]s ⍵)c(⍺[2]s ⍵)}
 
 t ← { ⍝ test: expected t node1 node2 tree...
   w←∊⍵
