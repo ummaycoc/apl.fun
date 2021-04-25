@@ -32,24 +32,11 @@
 ⍝  56   86  |     5  | 5 edges from 56 to 86
 ⍝   8   48  |     1  | 1 edge from 48 to 8
 
-⍝ bounds: tree (cmp b scan) value → bounds-seq
-⍝   find the increasing-lower or decreasing-upper
-⍝   bounds of subtrees holding a given value, via
-⍝   <b⌈ and >b⌊, respectively.
-b ← {∪⍵⍵\(⍺ ⍺⍺ ⍵)/⍺}
-
-⍝ preceeds: node p tree → nodes added before node
-p ← {⍵↑⍨¯1+⍵⍳⍺}
-
-⍝ search: node s tree... → path from root to node
-s ← {n←⍺ p ⍵ ⋄ l←n⍳(n(<b⌈)⍺),(n(>b⌊)⍺) ⋄ n[l[⍋l]],⍺}
-
-⍝ compare: path1 c path2 → |path1| |path1 & path2| |path2|
-⍝   where path1 & path2 is their common prefix
-c ← {(≢⍺),(+/∧\⊃=/⍺⍵↑¨⍨⌊/≢¨⍺⍵),(≢⍵)}
-
-⍝ distance: node1 node2 d tree... → distance
-d ← {~∧/⍺∊⍵:¯1 ⋄ +/1 ¯2 1×(⍺[1]s ⍵)c(⍺[2]s ⍵)}
+b ← {∪⍵⍵\(⍺ ⍺⍺ ⍵)/⍺}  ⍝ val (cmp b scan) tree → narrowing bounds (<b⌈ or >b⌊)
+p ← {⍵↑⍨¯1+⍵⍳⍺}  ⍝ val p tree → values added before val
+s ← {n←⍺p⍵ ⋄ l←n⍳(n<b⌈⍺),(n>b⌊⍺) ⋄ n[l[⍋l]],⍺}  ⍝ val s tree → path to val
+c ← {(≢⍺),(+/∧\⊃=/⍺⍵↑¨⍨⌊/≢¨⍺⍵),(≢⍵)}  ⍝ p1 c p2 → |p1| |common-prefix(p1, p2)| |p2|
+d ← {~∧/⍺∊⍵:¯1 ⋄ +/1 ¯2 1×(⍺[1]s ⍵)c(⍺[2]s ⍵)}  ⍝ v1 v2 d tree → v1 to v2 distance
 
 t ← { ⍝ test: expected t node1 node2 tree...
   w←∊⍵
