@@ -30,6 +30,7 @@
 ⍝   8    8  |     0  | 0 edges from 8 to 8
 ⍝   8   20  |     2  | 2 edges from 8 to 20
 ⍝  56   86  |     5  | 5 edges from 56 to 86
+⍝   8   48  |     1  | 1 edge from 48 to 8
 
 ⍝ bounds: tree (cmp b scan) value → bounds-seq
 ⍝   find the increasing-lower or decreasing-upper
@@ -56,3 +57,13 @@ t ← { ⍝ test: expected t node1 node2 tree...
   ⍺=f:'Test ',(⍕w[1,2]),' passed'
   'Test ',(⍕w[1,2]),' failed: ',(⍕f),'≠',⍕⍺
 }
+
+⍝ The tests from the header
+tree ← 48 8 57 76 90 12 86 83 99 87 55 20 56
+¯1 t 1 8 tree
+¯1 t 8 1 tree
+¯1 t 1 2 tree
+0 t 8 8 tree
+2 t 8 20 tree
+5 t 56 86 tree
+1 t 8 48 tree
