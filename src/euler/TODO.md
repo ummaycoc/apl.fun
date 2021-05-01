@@ -11,3 +11,7 @@ Requires a little more time (find the 10,001th Prime).
 ## Problem 10
 
 Requires more prime finding.
+
+## Problem 14
+
+Longest Collatz sequence requires a bit of manipulation.
