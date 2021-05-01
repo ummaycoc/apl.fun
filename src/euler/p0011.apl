@@ -28,3 +28,6 @@ d ← {i←,⍳⍴⍵ ⋄ k←(+/¨i){⊂⍵}⌸i ⋄ (j k)⊂⍵[⊃,/k]}
 p ← {⊃,/{4×/⍵}¨{(3<≢¨⍵)/⍵}⍵}
 b ← {⌈/(,4×/⍵),(,4×⌿⍵),(p d⍵),(p d⌽⍵)}
 b n ⍬
+
+⍝ An alternative for j which might seem better but longer
+⍝ j ← {n←≢¨⍵ ⋄ (2⍴⍨+/n)⊤+/2*¯1++\n}
