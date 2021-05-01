@@ -15,3 +15,7 @@ Requires more prime finding.
 ## Problem 14
 
 Longest Collatz sequence requires a bit of manipulation.
+
+## Problem 17
+
+Counting letters in numbers converted to words.
