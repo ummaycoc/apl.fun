@@ -36,7 +36,7 @@ b ← {∪⍵⍵\(⍺ ⍺⍺ ⍵)/⍺}  ⍝ val (cmp b scan) tree → narrowing 
 p ← {⍵↑⍨¯1+⍵⍳⍺}  ⍝ val p tree → values added before val
 s ← {n←⍺p⍵ ⋄ l←n⍳(n<b⌈⍺),(n>b⌊⍺) ⋄ n[l[⍋l]],⍺}  ⍝ val s tree → path to val
 c ← {(≢⍺),(+/∧\⊃=/⍺⍵↑¨⍨⌊/≢¨⍺⍵),(≢⍵)}  ⍝ p1 c p2 → |p1| |common-prefix(p1, p2)| |p2|
-d ← {~∧/⍺∊⍵:¯1 ⋄ 1 ¯2 1+.×(⍺[1]s ⍵)c(⍺[2]s ⍵)}  ⍝ v1 v2 d tree → v1 to v2 distance
+d ← {~∧/⍺∊⍵:¯1 ⋄ 1 ¯2 1+.×(⍺[1]s⍵)c(⍺[2]s⍵)}  ⍝ v1 v2 d tree → v1 to v2 distance
 
 t ← { ⍝ test: expected t node1 node2 tree...
   w←∊⍵
