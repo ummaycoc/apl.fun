@@ -1,9 +1,5 @@
 # Problems that have been skipped (for now)
 
-## Problem 7
-
-Requires a little more time (find the 10,001th Prime).
-
 ## Problem 10
 
 Requires more prime finding.
