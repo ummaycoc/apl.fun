@@ -1,9 +1,5 @@
 # Problems that have been skipped (for now)
 
-## Problem 10
-
-Requires more prime finding.
-
 ## Problem 14
 
 Longest Collatz sequence requires a bit of manipulation.
