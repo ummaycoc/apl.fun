@@ -20,7 +20,7 @@
 
 s ← 'Please enter a four digit number: '
 p ← {x←+/⍺=⍵ ⋄ o←(+/⍺∊⍵)-x ⋄ x o/'xo'}  ⍝ convert guess to x's & o's
-n ← {⍎¨(⍵∊⎕D)/⍵}  ⍝ scan string for digits
+n ← {⍎¨⍵/⍨⍵∊⎕D}  ⍝ scan string for digits
 q ← {⍞←⍵ ⋄ (≢⍵)↓⍞}  ⍝ ask user for input
 g ← {1↓{n'1',q s}⍣{5=≢⍺}''}  ⍝ acquire guess from user
 w ← {⎕←⍺ ⋄ 4=+/'x'=⍺}  ⍝ winning condition
