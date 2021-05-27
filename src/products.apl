@@ -4,3 +4,7 @@
 p ← {¯1↓×\1,⍵}   ⍝ Partial products
 c ← {⍵⍵ ⍺⍺ ⍵⍵ ⍵} ⍝ Conjugation operator
 m ← (p×(p c ⌽))  ⍝ Missing product
+
+⍝ Alternative with composition
+p ← {¯1↓×\1,⍵}   ⍝ Partial products
+m ← (p×(⌽∘p∘⌽))  ⍝ Missing product
