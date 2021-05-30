@@ -23,3 +23,7 @@ Dynamic programming for making change.
 ## Problem 51
 
 Equivalence classes of primes with replacing digits.
+
+## Problem 54
+
+Poker hand comparisons.
