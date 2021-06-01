@@ -4,10 +4,6 @@
 
 Longest Collatz sequence requires a bit of manipulation.
 
-## Problem 17
-
-Counting letters in numbers converted to words.
-
 ## Problem 24
 
 Lexicographic permutations (seems easy but tedious to figure out details).
