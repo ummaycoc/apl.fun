@@ -19,5 +19,5 @@ m ← {=⌿⍵[⍺;]×⊖↑{10 10⊥⍵}¨(⍵[1 2;])(⍵[3 4;])}  ⍝ mask: cr
 q ← {d←⍵ ⋄ ⊃∨/{(⍵ e d)∧((o[⍵]) m d)}¨,1 2∘.,3 4}  ⍝ mask: digits cancel and fractions equal
 f ← {⍵/⍨⊃∧/(l ⍵)(n ⍵)(t ⍵)(q ⍵)}  ⍝ compress: <, non-trivial, cancelable, equal
 b ← {2(2⊃⍴⍵)⍴10 10⊥2(2×2⊃⍴⍵)⍴⍵}  ⍝ encode back to double digits
-r ← {{⍵÷∨/⍵}×/⍵}  ⍝ feduce product to lowest terms
+r ← {{⍵÷∨/⍵}×/⍵}  ⍝ reduce product to lowest terms
 r b f c,9+⍳90 90  ⍝ answer
