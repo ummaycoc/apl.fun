@@ -1,9 +1,5 @@
 # Problems that have been skipped (for now)
 
-## Problem 14
-
-Longest Collatz sequence requires a bit of manipulation.
-
 ## Problem 24
 
 Lexicographic permutations (seems easy but tedious to figure out details).
