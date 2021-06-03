@@ -1,9 +1,5 @@
 # Problems that have been skipped (for now)
 
-## Problem 24
-
-Lexicographic permutations (seems easy but tedious to figure out details).
-
 ## Problem 26
 
 Finding longest repeating cycle in 1/d for d≤1000.
