@@ -18,6 +18,7 @@
 ⍝   7 5 3 0 | xxoo | 7 & 5 are x's, 3 & 0 are o's
 ⍝   7 5 0 3 | xxxx | All correct
 
+⎕IO ← 0  ⍝ zero-relative so 4?9 includes 0s
 s ← 'Please enter a four digit number: '
 p ← {x←⍺+.=⍵ ⋄ o←(+/⍺∊⍵)-x ⋄ x o/'xo'}  ⍝ convert guess to x's & o's
 n ← {⍎¨⍵/⍨⍵∊⎕D}  ⍝ scan string for digits
