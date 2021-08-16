@@ -26,3 +26,18 @@ place ← { ⍝ r c place mines...
 mines ← {⍺↑((⊂(≢?≢))⌷⊣),⍳⍵}  ⍝ ⍺ random mines in ⍵ grid
 start ← {⍵∊⍨⊂⍺:⍵~⊂⍺ ⋄ ¯1↓⍵}  ⍝ drop ⍺ mine or last of ⍵ if not found
 play ← {⍵[1 2] place ⍵[3 4] start (⍺+1) mines ⍵[1 2]} ⍝ n play r c x y
+
+
+⍝ N-dimensional
+⍝ ¯1=mine, 0=empty, number=neighbors
+place ← { ⍝ r c place mines...
+  a←,⍵∘.+,¯2+⍳3⍴⍨≢⍺  ⍝ mines and squares around them
+  c←⍉{⍺,≢⍵}⌸a/⍨∧⌿((1⍴⍨≢⍺),-⍺)(≤⍤0 1)⍉(⊢,-)↑,a  ⍝ counts within valid squares
+  m←⍺⍴0 ⋄ m[1⌷c]←2⌷c ⋄ m[⍵]←¯1 ⋄ m  ⍝ minesweep map
+}
+mines ← {⍺↑((⊂(≢?≢))⌷⊣),⍳⍵}  ⍝ ⍺ random mines in ⍵ grid
+start ← {⍵∊⍨⊂⍺:⍵~⊂⍺ ⋄ ¯1↓⍵}  ⍝ drop ⍺ mine or last of ⍵ if not found
+play ← { ⍝ n play dim1 ... dimN pos1 ... posN
+  h←2÷⍨≢⍵ ⋄ d←⍵[⍳h] ⋄ s←⍵[h+⍳h]
+  d place s start (⍺+1) mines d
+}
